@@ -188,6 +188,12 @@ namespace Sitecore.Support.Commerce.XA.Foundation.Catalog.Pipelines
             var catalogItemId = string.Empty;
             var url = HttpContext.Current.Request.RawUrl;
 
+            #region   modified part to remove ending slash
+            if (url.EndsWith("/", StringComparison.OrdinalIgnoreCase))
+            {
+                url = url.Substring(0, url.Length - 1);
+            }
+            #endregion
 
             var charIndex = url.LastIndexOf("/", StringComparison.OrdinalIgnoreCase);
 
